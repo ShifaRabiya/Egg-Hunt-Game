@@ -1,0 +1,354 @@
+body {
+  margin: 0;
+  background: #e8f4fa;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#game-over-screen.hidden {
+  display: none;
+}
+
+#start-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  font-family: "Press Start 2P", monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  text-align: center;
+}
+
+#start-screen h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+#start-btn {
+  padding: 1rem 2.5rem;
+  font-size: 1.4rem;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#start-btn:hover {
+  background: #218838;
+}
+
+.game-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: url("img/bg1.jpg"); /* Optional background */
+  background-size: cover;
+}
+
+.hen-row {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  z-index: 2;
+}
+
+.hen {
+  width: 165px;
+  height: 165px;
+  background: url("img/hen1.png") no-repeat center/contain;
+  align-items: flex-end;
+  z-index: 2;
+}
+
+.rope {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 120%;
+  height: 25px;
+  background-image: url("img/rope.png"); /* realistic rope texture */
+  background-repeat: repeat-x;
+  background-size: contain;
+  z-index: 1;
+}
+
+.egg {
+  width: 70px;
+  height: 70px;
+  background: url("img/egg.png") no-repeat center/contain; /* White egg */
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  display: none;
+  z-index: 2;
+}
+
+.golden-egg {
+  background-image: url(img/golden-egg.png);
+}
+
+.black-egg {
+  background-image: url(img/black_egg.png);
+}
+
+.basket {
+  width: 176px;
+  height: 80px;
+  background: url("img/basket.png") no-repeat center/contain; /* Basket image */
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.basket-cover {
+  width: 132px;
+  height: 60px;
+  background: url("img/basket-cover.png") no-repeat center/contain; /* Basket image */
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.cracked-egg {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: url("img/cracked-egg.png") no-repeat center/contain;
+  opacity: 1;
+  transition: opacity 2s ease-out;
+  z-index: 2;
+}
+
+.scoreboard {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 20px;
+  color: #333;
+  font-family: "Handlee", cursive;
+  font-weight: bold;
+}
+
+.floating-points {
+  position: absolute;
+  font-weight: bold;
+  font-size: 24px;
+  animation: floatUpFade 2s ease-out forwards;
+  font-family: "Handlee", cursive;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes floatUpFade {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+}
+
+#game-over-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-family: "Press Start 2P", monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  text-align: center;
+  font-family: "Handlee", cursive;
+}
+
+#game-over-screen h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+#game-over-screen p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+#retry-btn {
+  padding: 0.8rem 2rem;
+  font-size: 1.2rem;
+  background: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#retry-btn:hover {
+  background: #ff2222;
+}
+
+.countdown {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 6rem;
+  color: yellow;
+  font-weight: bold;
+  z-index: 1000;
+  animation: 1s ease-in-out infinite;
+  font-family: "Handlee", cursive;
+}
+
+#rules-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.rules-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: left;
+  max-width: 500px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  font-family: "Handlee", cursive;
+}
+
+.rules-box h2 {
+  margin-top: 0;
+}
+
+.rules-box ul {
+  padding-left: 1.2rem;
+}
+
+.rules-box button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-family: "Handlee", cursive;
+  font-weight: bolder;
+  background-color: #ffcc00;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#rules-btn {
+  margin-top: 10px;
+  padding: 1rem 2.5rem;
+  font-size: 1.4rem;
+  background: #ffcc00;
+  color: rgb(73, 73, 73);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-weight: bolder;
+}
+
+#rules-btn:hover {
+  background: #d3a900;
+}
+
+.sound-btn {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  top: 20px;
+  left: 20px;
+}
+
+@media (max-width: 768px) {
+  #start-screen h1,
+  #game-over-screen h1 {
+    font-size: 2rem;
+  }
+
+  #start-btn,
+  #rules-btn,
+  #retry-btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .hen {
+    width: 110px;
+    height: 110px;
+  }
+
+  .basket {
+    width: 130px;
+    height: 60px;
+  }
+
+  .basket-cover {
+    width: 100px;
+    height: 45px;
+  }
+
+  .egg {
+    width: 50px;
+    height: 50px;
+  }
+
+  .cracked-egg {
+    width: 70px;
+    height: 70px;
+  }
+
+  .countdown {
+    font-size: 4rem;
+  }
+
+  .scoreboard {
+    font-size: 16px;
+  }
+
+  .sound-btn {
+    width: 40px;
+    height: 40px;
+    top: 15px;
+    left: 15px;
+  }
+
+  .floating-points {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Egg Catcher Game</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Dancing+Script:wght@400..700&family=Delius&family=Edu+NSW+ACT+Hand+Pre:wght@400..700&family=Handlee&family=Quicksand:wght@300..700&family=Satisfy&display=swap"
+    />
+    <audio id="hen-sound" src="sounds/hen.mp3"></audio>
+    <audio id="crack-sound" src="sounds/crack1.mp3"></audio>
+    <audio id="game-over-sound" src="sounds/game-over1.mp3"></audio>
+    <audio id="point-sound" src="sounds/point.mp3"></audio>
+    <audio id="button-sound" src="sounds/button.mp3"></audio>
+    <audio id="black-egg-sound" src="sounds/black-egg.mp3"></audio>
+  </head>
+  <body>
+    <div id="start-screen">
+      <h1 style="font-family: 'Delius', cursive">Egg Hunt</h1>
+      <button id="start-btn" style="font-family: 'Handlee', cursive">
+        Start Game
+      </button>
+      <button id="rules-btn" style="font-family: 'Handlee', cursive">
+        Rules
+      </button>
+      <img id="mute-btn-start" class="sound-btn" src="img/mute.png" />
+      <img
+        id="unmute-btn-start"
+        class="sound-btn hidden"
+        src="img/unmute.png"
+      />
+    </div>
+
+    <div class="game-container">
+      <!-- Hen Boxes -->
+      <div class="hen-row">
+        <div class="rope"></div>
+        <div class="hen" id="hen-0"></div>
+        <div class="hen" id="hen-1"></div>
+        <div class="hen" id="hen-2"></div>
+        <div class="hen" id="hen-3"></div>
+        <div class="hen" id="hen-4"></div>
+      </div>
+
+      <div id="game-over-screen" class="hidden">
+        <h1 style="font-family: 'Handlee', cursive">Game Over</h1>
+        <p id="high-score">High Score: 0</p>
+        <p id="final-score">Score: 0</p>
+        <button id="retry-btn">Retry</button>
+        <img id="mute-btn-over" class="sound-btn" src="img/mute.png" />
+        <img
+          id="unmute-btn-over"
+          class="sound-btn hidden"
+          src="img/unmute.png"
+        />
+      </div>
+
+      <!-- Eggs -->
+      <div class="egg" id="egg"></div>
+
+      <!-- Basket -->
+      <div class="basket-cover" id="basket-cover"></div>
+      <div class="basket" id="basket"></div>
+    </div>
+
+    <!-- Scoreboard -->
+    <div class="scoreboard">
+      High Score: <span id="highScore">0</span> | Score:
+      <span id="score">0</span> | Lives: <span id="lives">3</span>
+    </div>
+
+    <div id="rules-screen" class="hidden">
+      <div class="rules-box">
+        <h2>Rules & Regulations</h2>
+        <ul>
+          <li>🎯 Catch the falling eggs in your basket.</li>
+          <li>🥚 White egg = +1 point</li>
+          <li>🥇 Golden egg = +5 points</li>
+          <li>💣 Black egg = -10 points</li>
+          <li>💔 Missing a non-black egg costs a life.</li>
+          <li>☠️ Game over if lives = 0 or score goes below 0.</li>
+        </ul>
+        <button id="close-rules-btn" style="font-style: 'Handlee', cursive">
+          Close
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
