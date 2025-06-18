@@ -295,7 +295,7 @@ async function updateHighScoreIfNeeded() {
   const currentHigh = parseInt(currentHighText.replace(/\D/g, '')); // remove all non-digits
   if (score > currentHigh) {
     try {
-      await fetch("http://localhost:3000/highscore", {
+      await fetch("https://egg-hunt-game.onrender.com/highscore", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ score }),
