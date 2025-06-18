@@ -2,7 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
     <title>Egg Catcher Game</title>
     <link rel="stylesheet" href="styles.css" />
     <link
@@ -17,6 +21,10 @@
     <audio id="black-egg-sound" src="sounds/black-egg.mp3"></audio>
   </head>
   <body>
+    <div id="rotate-notice">
+      <p>Please rotate your device to landscape mode.</p>
+    </div>
+
     <div id="start-screen">
       <h1 style="font-family: 'Delius', cursive">Egg Hunt</h1>
       <button id="start-btn" style="font-family: 'Handlee', cursive">

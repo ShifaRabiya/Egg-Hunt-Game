@@ -163,6 +163,7 @@ function dropEgg() {
         }
       }, 20);
     }
+
     if (y > window.innerHeight) {
       clearInterval(fallInterval);
 
@@ -361,6 +362,8 @@ function unmuteAllSounds() {
   document.querySelectorAll("audio").forEach(audio => audio.muted = false);
 }
 
+const gameContainer = document.querySelector(".game-container");
+
 // Hook up all buttons
 document.querySelectorAll("#mute-btn-start, #mute-btn-over").forEach(btn => {
   btn.addEventListener("click", () => {
@@ -382,5 +385,14 @@ window.onload = () => {
   updateBasketPosition();
   gameLoop();
   fetchHighScore();
+gameContainer.addEventListener("touchmove", function (e) {
+  if (e.touches.length > 0) {
+    e.preventDefault(); // Required to stop scrolling
+    const touch = e.touches[0];
+    basketX = touch.clientX - basket.offsetWidth / 2;
+    basketX = Math.max(0, Math.min(window.innerWidth - basket.offsetWidth, basketX));
+    updateBasketPosition();
+  }
+}, { passive: false }); // 👈 important!
 };
 
