@@ -22,8 +22,8 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.85);
   color: white;
   font-family: "Press Start 2P", monospace;
@@ -72,6 +72,7 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
+  overflow: hidden;
   z-index: 2;
 }
 
@@ -87,7 +88,7 @@ body {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 120%;
+  width: 100%;
   height: 25px;
   background-image: url("img/rope.png"); /* realistic rope texture */
   background-repeat: repeat-x;
@@ -181,8 +182,8 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.8);
   color: white;
   font-family: "Press Start 2P", monospace;
@@ -311,7 +312,6 @@ body {
   width: 100vw;
   height: 100vh;
   font-size: 2rem;
-  display: none;
   justify-content: center;
   align-items: center;
   text-align: center;
