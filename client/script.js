@@ -297,7 +297,7 @@ async function updateHighScoreIfNeeded() {
     try {
       await fetch("https://egg-hunt-game.onrender.com/highscore", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "appication/json" },
         body: JSON.stringify({ score }),
       });
       document.getElementById("high-score").textContent = `High Score: ${score}`;
