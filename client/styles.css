@@ -440,3 +440,29 @@ body {
     display: none !important;
   }
 }
+
+@media only screen and (max-device-width: 768px) {
+  html {
+    font-size: 14px !important;
+  }
+
+  .hen {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .basket {
+    width: 90px !important;
+    height: 45px !important;
+  }
+
+  .cracked-egg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .basket-cover {
+    width: 70px;
+    height: 35px;
+  }
+}
