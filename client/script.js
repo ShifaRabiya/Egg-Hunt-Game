@@ -230,7 +230,7 @@ function showCrackedEgg(x, y) {
   const crackedEgg = document.createElement("div");
   crackedEgg.className = "cracked-egg";
   crackedEgg.style.left = `${x}px`;
-  crackedEgg.style.top = `${y}px`;
+  crackedEgg.style.bottom = "0";
   document.querySelector(".game-container").appendChild(crackedEgg);
 
   // Trigger fade-out after a short delay
