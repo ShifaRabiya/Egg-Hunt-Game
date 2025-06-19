@@ -24,7 +24,7 @@ function updateVH() {
 }
 window.addEventListener('resize', updateVH);
 window.addEventListener('orientationchange', updateVH);
-window.onload = updateVH;
+
 
 document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") movingLeft = true;
@@ -389,6 +389,7 @@ document.querySelectorAll("#unmute-btn-start, #unmute-btn-over").forEach(btn => 
 });
 
 window.onload = () => {
+  updateVH();
   updateBasketPosition();
   gameLoop();
   fetchHighScore();
