@@ -320,6 +320,12 @@ body {
   padding: 1rem;
 }
 
+#rotate-notice img {
+  max-width: 80vw;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
 /* MOBILE FIXES */
 @media screen and (max-width: 768px) {
   html {
