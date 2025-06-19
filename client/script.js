@@ -299,30 +299,25 @@ function startCountdown(callback) {
 }
 
 function fetchHighScore() {
-  fetch("https://egg-hunt-game.onrender.com/highscore")
-    .then(res => res.json())
-    .then(data => {
-      highScore = data.highScore;
-      document.getElementById("high-score").textContent = `High Score: ${highScore}`;
-      document.getElementById("highScore").textContent = highScore;
-    });
+  const stored = localStorage.getItem("highScore");
+  if (stored) {
+    highScore = parseInt(stored);
+    document.getElementById("high-score").textContent = `High Score: ${highScore}`;
+    document.getElementById("highScore").textContent = highScore;
+  } else {
+    highScore = 0;
+    document.getElementById("high-score").textContent = `High Score: 0`;
+    document.getElementById("highScore").textContent = 0;
+  }
 }
 
-async function updateHighScoreIfNeeded() {
+function updateHighScoreIfNeeded() {
   if (score > highScore) {
-    try {
-      await fetch("https://egg-hunt-game.onrender.com/highscore", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ score }),
-      });
+    highScore = score; // update in memory
+    localStorage.setItem("highScore", score); // update localStorage
 
-      highScore = score;
-      document.getElementById("high-score").textContent = `High Score: ${score}`;
-      document.getElementById("highScore").textContent = score;
-    } catch (err) {
-      console.error("Failed to update high score:", err);
-    }
+    document.getElementById("high-score").textContent = `High Score: ${score}`;
+    document.getElementById("highScore").textContent = score;
   }
 }
 
