@@ -1,5 +1,5 @@
 :root {
-  --vh: 100vh; /* fallback */
+  --vh: 100vh;
 }
 
 html,
@@ -328,18 +328,6 @@ body {
 
 /* MOBILE FIXES */
 @media screen and (max-width: 950px), screen and (max-device-width: 950px) {
-  body::before {
-    content: "✅ Mobile view applied";
-    color: red;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    background: yellow;
-    font-size: 16px;
-    padding: 5px;
-  }
-
   html {
     font-size: 14px;
   }
@@ -426,7 +414,6 @@ body {
   }
 }
 
-/* ROTATE WARNING FOR PORTRAIT MODE ONLY ON SMALL SCREENS */
 @media screen and (orientation: portrait) and (max-width: 768px) {
   #rotate-notice {
     display: flex;
@@ -437,6 +424,7 @@ body {
   .game-container,
   #start-screen,
   #game-over-screen {
+    background-image: url(img/bg11.jpg);
     display: none !important;
   }
 }
