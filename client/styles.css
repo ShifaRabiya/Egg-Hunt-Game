@@ -64,7 +64,7 @@ body {
   width: 100vw;
   height: calc(var(--vh, 1vh) * 100);
   background: url("img/bg1.jpg"); /* Optional background */
-  background-size: cover;
+  background-size: contain;
 }
 
 .hen-row {
@@ -427,6 +427,9 @@ body {
   }
 
   .game-container {
-    background-image: url(img/bg11.jpg);
+    background-image: url("img/bg11.jpg");
+    background-size: contain; /* or: 100% auto */
+    background-position: bottom center;
+    background-repeat: no-repeat;
   }
 }
