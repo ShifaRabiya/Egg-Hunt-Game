@@ -20,11 +20,11 @@ let gameWasRunning = false;
 let isMuted = false;
 
 function updateVH() {
-  document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
+updateVH();
 window.addEventListener('resize', updateVH);
-window.addEventListener('orientationchange', updateVH);
-
 
 document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") movingLeft = true;

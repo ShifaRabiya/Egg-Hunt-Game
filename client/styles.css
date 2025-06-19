@@ -327,7 +327,7 @@ body {
 }
 
 /* MOBILE FIXES */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 950px), screen and (max-device-width: 950px) {
   body::before {
     content: "✅ Mobile view applied";
     color: red;
@@ -438,31 +438,5 @@ body {
   #start-screen,
   #game-over-screen {
     display: none !important;
-  }
-}
-
-@media only screen and (max-device-width: 768px) {
-  html {
-    font-size: 14px !important;
-  }
-
-  .hen {
-    width: 80px !important;
-    height: 80px !important;
-  }
-
-  .basket {
-    width: 90px !important;
-    height: 45px !important;
-  }
-
-  .cracked-egg {
-    width: 60px;
-    height: 60px;
-  }
-
-  .basket-cover {
-    width: 70px;
-    height: 35px;
   }
 }
