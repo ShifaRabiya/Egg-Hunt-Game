@@ -64,7 +64,7 @@ body {
   width: 100vw;
   height: calc(var(--vh, 1vh) * 100);
   background: url("img/bg1.jpg"); /* Optional background */
-  background-size: 100% auto;
+  background-size: cover;
   background-position: bottom center;
   background-repeat: no-repeat;
 }
@@ -430,7 +430,7 @@ body {
 
   .game-container {
     background-image: url("img/bg11.jpg");
-    background-size: 100% auto;
+    background-size: cover;
     background-position: bottom center;
     background-repeat: no-repeat;
   }
