@@ -23,8 +23,19 @@ function updateVH() {
   const vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
+
+// Run at load
 updateVH();
+
+// Update on resize, orientation change, AND visual viewport changes
 window.addEventListener('resize', updateVH);
+window.addEventListener('orientationchange', updateVH);
+
+// For iOS and Android browsers when soft UI appears/disappears
+if (window.visualViewport) {
+  window.visualViewport.addEventListener('resize', updateVH);
+  window.visualViewport.addEventListener('scroll', updateVH);
+}
 
 document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") movingLeft = true;
