@@ -421,7 +421,6 @@ body {
     align-items: center;
   }
 
-  .game-container,
   #start-screen,
   #game-over-screen {
     display: none !important;
