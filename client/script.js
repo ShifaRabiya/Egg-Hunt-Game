@@ -299,7 +299,7 @@ function startCountdown(callback) {
 }
 
 function fetchHighScore() {
-  fetch("http://localhost:3000/highscore")
+  fetch("https://egg-hunt-game.onrender.com/highscore")
     .then(res => res.json())
     .then(data => {
       highScore = data.highScore;
@@ -309,15 +309,15 @@ function fetchHighScore() {
 }
 
 async function updateHighScoreIfNeeded() {
-  const currentHighText = document.getElementById("high-score").textContent;
-  const currentHigh = parseInt(currentHighText.replace(/\D/g, '')); // remove all non-digits
-  if (score > currentHigh) {
+  if (score > highScore) {
     try {
       await fetch("https://egg-hunt-game.onrender.com/highscore", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ score }),
       });
+
+      highScore = score;
       document.getElementById("high-score").textContent = `High Score: ${score}`;
       document.getElementById("highScore").textContent = score;
     } catch (err) {

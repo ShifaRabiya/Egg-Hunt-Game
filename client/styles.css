@@ -430,7 +430,7 @@ body {
 
   .game-container {
     background-image: url("img/bg11.jpg");
-    background-size: cover;
+    background-size: 100% auto;
     background-position: bottom center;
     background-repeat: no-repeat;
   }
