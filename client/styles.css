@@ -424,7 +424,10 @@ body {
   .game-container,
   #start-screen,
   #game-over-screen {
-    background-image: url(img/bg11.jpg);
     display: none !important;
+  }
+
+  .game-container {
+    background-image: url(img/bg11.jpg);
   }
 }
