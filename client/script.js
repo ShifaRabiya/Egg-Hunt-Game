@@ -72,6 +72,7 @@ function gameLoop() {
     basketX = Math.max(0, Math.min(window.innerWidth - basket.offsetWidth, basketX));
     updateBasketPosition();
   }
+
   requestAnimationFrame(gameLoop);
 }
 
@@ -413,18 +414,33 @@ document.querySelectorAll("#unmute-btn-start, #unmute-btn-over").forEach(btn => 
   });
 });
 
-leftBtn.addEventListener("touchstart", () => movingLeft = true);
-leftBtn.addEventListener("touchend", () => movingLeft = false);
-
-rightBtn.addEventListener("touchstart", () => movingRight = true);
-rightBtn.addEventListener("touchend", () => movingRight = false);
-
-// Optional: Mouse support (for testing on desktop)
-leftBtn.addEventListener("mousedown", () => movingLeft = true);
+leftBtn.addEventListener("mousedown", (e) => {
+  e.preventDefault();
+  movingLeft = true;
+  movingRight = false;
+});
 leftBtn.addEventListener("mouseup", () => movingLeft = false);
 
-rightBtn.addEventListener("mousedown", () => movingRight = true);
+rightBtn.addEventListener("mousedown", (e) => {
+  e.preventDefault();
+  movingRight = true;
+  movingLeft = false;
+});
 rightBtn.addEventListener("mouseup", () => movingRight = false);
+
+leftBtn.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+  movingLeft = true;
+  movingRight = false;
+});
+leftBtn.addEventListener("touchend", () => movingLeft = false);
+
+rightBtn.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+  movingRight = true;
+  movingLeft = false;
+});
+rightBtn.addEventListener("touchend", () => movingRight = false);
 
 window.onload = () => {
   updateVH();
