@@ -67,7 +67,6 @@ function gameLoop() {
       basketVelocity = 0;
     }
 
-    basketVelocity = Math.max(-maxSpeed, Math.min(maxSpeed, basketVelocity));
     basketX += basketVelocity;
     basketX = Math.max(0, Math.min(window.innerWidth - basket.offsetWidth, basketX));
     updateBasketPosition();
