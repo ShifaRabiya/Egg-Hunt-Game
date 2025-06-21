@@ -10,7 +10,7 @@ const rightBtn = document.getElementById("right-btn");
 const mobileControls = document.querySelector('.mobile-controls');
 const startScreen = document.getElementById('start-screen');
 const gameOverScreen = document.getElementById('game-over-screen');
-const moveSpeed = 6;
+const moveSpeed = 8;
 
 let score = 0;
 let lives = 3;
