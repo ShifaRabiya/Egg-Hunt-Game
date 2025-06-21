@@ -14,8 +14,6 @@ const moveSpeed = 10;
 const acceleration = 1;
 const maxSpeed = 15;
 const friction = 0.9;
-const tapBoost = 5;
-
 
 let score = 0;
 let lives = 3;
@@ -416,26 +414,11 @@ document.querySelectorAll("#unmute-btn-start, #unmute-btn-over").forEach(btn => 
   });
 });
 
-leftBtn.addEventListener("touchstart", (e) => {
-  e.preventDefault();
-  basketX -= 5;
-  basketX = Math.max(0, basketX);
-  updateBasketPosition();
-});
+leftBtn.addEventListener("touchstart", () => movingLeft = true);
+leftBtn.addEventListener("touchend", () => movingLeft = false);
 
-rightBtn.addEventListener("touchstart", (e) => {
-  e.preventDefault();
-  basketX += 5;
-  basketX = Math.min(window.innerWidth - basket.offsetWidth, basketX);
-  updateBasketPosition();
-});
-
-// Optional: Mouse support (for testing on desktop)
-leftBtn.addEventListener("mousedown", () => movingLeft = true);
-leftBtn.addEventListener("mouseup", () => movingLeft = false);
-
-rightBtn.addEventListener("mousedown", () => movingRight = true);
-rightBtn.addEventListener("mouseup", () => movingRight = false);
+rightBtn.addEventListener("touchstart", () => movingRight = true);
+rightBtn.addEventListener("touchend", () => movingRight = false);
 
 window.onload = () => {
   updateVH();
