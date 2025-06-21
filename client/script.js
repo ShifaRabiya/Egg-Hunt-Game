@@ -63,6 +63,8 @@ function gameLoop() {
       basketVelocity -= acceleration;
     } else if (movingRight && !movingLeft) {
       basketVelocity += acceleration;
+    } else {
+      basketVelocity = 0; 
     }
 
     basketVelocity = Math.max(-maxSpeed, Math.min(maxSpeed, basketVelocity));
