@@ -414,17 +414,24 @@ document.querySelectorAll("#unmute-btn-start, #unmute-btn-over").forEach(btn => 
   });
 });
 
-leftBtn.addEventListener("touchstart", () => movingLeft = true);
-leftBtn.addEventListener("touchend", () => movingLeft = false);
+leftBtn.addEventListener("touchstart", () => {
+  basketX -= 5;
+  basketX = Math.max(0, basketX);
+  updateBasketPosition();
+});
 
-rightBtn.addEventListener("touchstart", () => movingRight = true);
-rightBtn.addEventListener("touchend", () => movingRight = false);
+rightBtn.addEventListener("touchstart", () => {
+  basketX += 5;
+  basketX = Math.min(window.innerWidth - basket.offsetWidth, basketX);
+  updateBasketPosition();
+});
 
 window.onload = () => {
   updateVH();
   updateBasketPosition();
   gameLoop();
   fetchHighScore();
+
 gameContainer.addEventListener("touchmove", function (e) {
   if (e.touches.length > 0) {
     e.preventDefault(); // Required to stop scrolling
