@@ -366,7 +366,11 @@ body {
     color: black;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     cursor: pointer;
-    pointer-events: auto; /* Enables touch for the button */
+    pointer-events: auto;
+    user-select: none;
+    -webkit-user-select: none; /* For Safari */
+    -moz-user-select: none;
+    -ms-user-select: none;
   }
 
   .arrow-btn.left {
