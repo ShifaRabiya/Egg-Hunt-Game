@@ -14,6 +14,8 @@ const moveSpeed = 10;
 const acceleration = 1;
 const maxSpeed = 15;
 const friction = 0.9;
+const tapBoost = 5;
+
 
 let score = 0;
 let lives = 3;
@@ -414,18 +416,37 @@ document.querySelectorAll("#unmute-btn-start, #unmute-btn-over").forEach(btn => 
   });
 });
 
-leftBtn.addEventListener("touchstart", () => movingLeft = true);
-leftBtn.addEventListener("touchend", () => movingLeft = false);
-
-rightBtn.addEventListener("touchstart", () => movingRight = true);
-rightBtn.addEventListener("touchend", () => movingRight = false);
-
-// Optional: Mouse support (for testing on desktop)
-leftBtn.addEventListener("mousedown", () => movingLeft = true);
+leftBtn.addEventListener("mousedown", (e) => {
+  e.preventDefault();
+  basketVelocity = -tapBoost;
+  movingLeft = true;
+  movingRight = false;
+});
 leftBtn.addEventListener("mouseup", () => movingLeft = false);
 
-rightBtn.addEventListener("mousedown", () => movingRight = true);
+rightBtn.addEventListener("mousedown", (e) => {
+  e.preventDefault();
+  basketVelocity = tapBoost;
+  movingRight = true;
+  movingLeft = false;
+});
 rightBtn.addEventListener("mouseup", () => movingRight = false);
+
+leftBtn.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+  basketVelocity = -tapBoost;
+  movingLeft = true;
+  movingRight = false;
+});
+leftBtn.addEventListener("touchend", () => movingLeft = false);
+
+rightBtn.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+  basketVelocity = tapBoost;
+  movingRight = true;
+  movingLeft = false;
+});
+rightBtn.addEventListener("touchend", () => movingRight = false);
 
 window.onload = () => {
   updateVH();
