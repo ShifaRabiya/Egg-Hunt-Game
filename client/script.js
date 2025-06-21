@@ -340,6 +340,11 @@ function updateHighScoreIfNeeded() {
 
 document.getElementById("retry-btn").addEventListener("click", () => {
   document.getElementById("button-sound").play();
+
+  // Stop game-over sound if it's still playing
+  gameOverSound.pause();
+  gameOverSound.currentTime = 0;
+
   const gameOverScreen = document.getElementById("game-over-screen");
   gameOverScreen.classList.add('hidden'); 
   gameOver = false;
