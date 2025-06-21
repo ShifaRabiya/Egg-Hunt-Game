@@ -10,7 +10,7 @@ const rightBtn = document.getElementById("right-btn");
 const mobileControls = document.querySelector('.mobile-controls');
 const startScreen = document.getElementById('start-screen');
 const gameOverScreen = document.getElementById('game-over-screen');
-const moveSpeed = 10;
+const moveSpeed = 6;
 
 let score = 0;
 let lives = 3;
@@ -55,10 +55,10 @@ document.addEventListener("keyup", (e) => {
 
 function gameLoop() {
   if (!isPaused) {
-    if (movingLeft) basketX -= 20;
-    if (movingRight) basketX += 20;
+    if (movingLeft) basketX -= moveSpeed;
+    if (movingRight) basketX += moveSpeed;
 
-    basketX = Math.max(0, Math.min(window.innerWidth - 100, basketX));
+    basketX = Math.max(0, Math.min(window.innerWidth - basket.offsetWidth, basketX));
     updateBasketPosition();
   }
 
