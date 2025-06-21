@@ -61,13 +61,15 @@ document.addEventListener("keyup", (e) => {
 
 function gameLoop() {
   if (!isPaused) {
-    if (movingLeft && !movingRight) {
-      basketVelocity -= acceleration;
-    } else if (movingRight && !movingLeft) {
-      basketVelocity += acceleration;
-    } else {
-      basketVelocity = 0;
-    }
+      if (movingLeft && !movingRight) {
+    if (basketVelocity > 0) basketVelocity = 0;
+    basketVelocity = Math.max(basketVelocity - acceleration, -maxSpeed);
+  } else if (movingRight && !movingLeft) {
+    if (basketVelocity < 0) basketVelocity = 0;
+    basketVelocity = Math.min(basketVelocity + acceleration, maxSpeed);
+  } else {
+    basketVelocity = 0;
+  }
 
     basketVelocity = Math.max(-maxSpeed, Math.min(maxSpeed, basketVelocity));
     basketX += basketVelocity;
@@ -418,7 +420,6 @@ document.querySelectorAll("#unmute-btn-start, #unmute-btn-over").forEach(btn => 
 
 leftBtn.addEventListener("mousedown", (e) => {
   e.preventDefault();
-  basketVelocity = -tapBoost;
   movingLeft = true;
   movingRight = false;
 });
@@ -426,7 +427,6 @@ leftBtn.addEventListener("mouseup", () => movingLeft = false);
 
 rightBtn.addEventListener("mousedown", (e) => {
   e.preventDefault();
-  basketVelocity = tapBoost;
   movingRight = true;
   movingLeft = false;
 });
@@ -434,7 +434,6 @@ rightBtn.addEventListener("mouseup", () => movingRight = false);
 
 leftBtn.addEventListener("touchstart", (e) => {
   e.preventDefault();
-  basketVelocity = -tapBoost;
   movingLeft = true;
   movingRight = false;
 });
@@ -442,7 +441,6 @@ leftBtn.addEventListener("touchend", () => movingLeft = false);
 
 rightBtn.addEventListener("touchstart", (e) => {
   e.preventDefault();
-  basketVelocity = tapBoost;
   movingRight = true;
   movingLeft = false;
 });
