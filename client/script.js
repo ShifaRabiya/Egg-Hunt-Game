@@ -414,28 +414,17 @@ document.querySelectorAll("#unmute-btn-start, #unmute-btn-over").forEach(btn => 
   });
 });
 
-leftBtn.addEventListener("touchstart", (e) => {
-  e.preventDefault();
-  movingLeft = true;
-});
+leftBtn.addEventListener("touchstart", () => movingLeft = true);
 leftBtn.addEventListener("touchend", () => movingLeft = false);
 
-rightBtn.addEventListener("touchstart", (e) => {
-  e.preventDefault();
-  movingRight = true;
-});
+rightBtn.addEventListener("touchstart", () => movingRight = true);
 rightBtn.addEventListener("touchend", () => movingRight = false);
 
-leftBtn.addEventListener("mousedown", (e) => {
-  e.preventDefault();
-  movingLeft = true;
-});
+// Optional: Mouse support (for testing on desktop)
+leftBtn.addEventListener("mousedown", () => movingLeft = true);
 leftBtn.addEventListener("mouseup", () => movingLeft = false);
 
-rightBtn.addEventListener("mousedown", (e) => {
-  e.preventDefault();
-  movingRight = true;
-});
+rightBtn.addEventListener("mousedown", () => movingRight = true);
 rightBtn.addEventListener("mouseup", () => movingRight = false);
 
 window.onload = () => {
