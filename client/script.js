@@ -11,6 +11,9 @@ const mobileControls = document.querySelector('.mobile-controls');
 const startScreen = document.getElementById('start-screen');
 const gameOverScreen = document.getElementById('game-over-screen');
 const moveSpeed = 8;
+const acceleration = 1;
+const maxSpeed = 15;
+const friction = 0.9;
 
 let score = 0;
 let lives = 3;
@@ -24,6 +27,7 @@ let highScore = 0;
 let isPaused = false;
 let gameWasRunning = false;
 let isMuted = false;
+let basketVelocity = 0;
 
 function updateVH() {
   const vh = window.innerHeight * 0.01;
@@ -55,10 +59,20 @@ document.addEventListener("keyup", (e) => {
 
 function gameLoop() {
   if (!isPaused) {
-    if (movingLeft) basketX -= moveSpeed;
-    if (movingRight) basketX += moveSpeed;
+    if (movingLeft && !movingRight) {
+      basketVelocity -= acceleration;
+    } else if (movingRight && !movingLeft) {
+      basketVelocity += acceleration;
+    } else {
+      basketVelocity *= friction;
+    }
+
+    basketVelocity = Math.max(-maxSpeed, Math.min(maxSpeed, basketVelocity));
+
+    basketX += basketVelocity;
 
     basketX = Math.max(0, Math.min(window.innerWidth - basket.offsetWidth, basketX));
+
     updateBasketPosition();
   }
 
