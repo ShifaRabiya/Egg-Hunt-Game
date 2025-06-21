@@ -197,7 +197,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 10;
+  z-index: 1001;
   text-align: center;
   font-family: "Handlee", cursive;
 }
@@ -338,6 +338,43 @@ body {
     background-size: 100% auto;
     background-position: bottom center;
     background-repeat: no-repeat;
+  }
+
+  .mobile-controls.hidden {
+    display: none !important;
+  }
+
+  .mobile-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    z-index: 1;
+    pointer-events: none; /* Allows game elements to receive touches except buttons */
+  }
+
+  .arrow-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.35);
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    pointer-events: auto; /* Enables touch for the button */
+  }
+
+  .arrow-btn.left {
+    left: 10px;
+  }
+
+  .arrow-btn.right {
+    right: 10px;
   }
 
   .hen-row {

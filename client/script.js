@@ -5,6 +5,12 @@ const scoreDisplay = document.getElementById("score");
 const livesDisplay = document.getElementById("lives");
 const pauseOverlay = document.getElementById("pause-overlay");
 const gameWrapper = document.querySelector(".game-container-wrapper");
+const leftBtn = document.getElementById("left-btn");
+const rightBtn = document.getElementById("right-btn");
+const mobileControls = document.querySelector('.mobile-controls');
+const startScreen = document.getElementById('start-screen');
+const gameOverScreen = document.getElementById('game-over-screen');
+const moveSpeed = 10;
 
 let score = 0;
 let lives = 3;
@@ -324,10 +330,11 @@ function updateHighScoreIfNeeded() {
 document.getElementById("retry-btn").addEventListener("click", () => {
   document.getElementById("button-sound").play();
   const gameOverScreen = document.getElementById("game-over-screen");
-  gameOverScreen.classList.add("hidden");
+  gameOverScreen.classList.add('hidden'); 
   gameOver = false;
 
   startCountdown(() => {
+    mobileControls.classList.remove('hidden'); 
     resetGame();
     fetchHighScore();
     dropEgg(); 
@@ -338,6 +345,8 @@ document.getElementById("start-btn").addEventListener("click", () => {
   document.getElementById("button-sound").play();
   const startScreen = document.getElementById("start-screen");
   startScreen.style.display = "none";
+  startScreen.classList.add('hidden');
+  mobileControls.classList.remove('hidden');
 
   startCountdown(() => {
     resetGame();
@@ -393,6 +402,19 @@ document.querySelectorAll("#unmute-btn-start, #unmute-btn-over").forEach(btn => 
     updateMuteIcons();
   });
 });
+
+leftBtn.addEventListener("touchstart", () => movingLeft = true);
+leftBtn.addEventListener("touchend", () => movingLeft = false);
+
+rightBtn.addEventListener("touchstart", () => movingRight = true);
+rightBtn.addEventListener("touchend", () => movingRight = false);
+
+// Optional: Mouse support (for testing on desktop)
+leftBtn.addEventListener("mousedown", () => movingLeft = true);
+leftBtn.addEventListener("mouseup", () => movingLeft = false);
+
+rightBtn.addEventListener("mousedown", () => movingRight = true);
+rightBtn.addEventListener("mouseup", () => movingRight = false);
 
 window.onload = () => {
   updateVH();
