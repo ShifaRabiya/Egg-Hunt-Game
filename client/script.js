@@ -417,28 +417,24 @@ document.querySelectorAll("#unmute-btn-start, #unmute-btn-over").forEach(btn => 
 leftBtn.addEventListener("touchstart", (e) => {
   e.preventDefault();
   movingLeft = true;
-  movingRight = false;
 });
 leftBtn.addEventListener("touchend", () => movingLeft = false);
 
 rightBtn.addEventListener("touchstart", (e) => {
   e.preventDefault();
   movingRight = true;
-  movingLeft = false;
 });
 rightBtn.addEventListener("touchend", () => movingRight = false);
 
 leftBtn.addEventListener("mousedown", (e) => {
   e.preventDefault();
   movingLeft = true;
-  movingRight = false;
 });
 leftBtn.addEventListener("mouseup", () => movingLeft = false);
 
 rightBtn.addEventListener("mousedown", (e) => {
   e.preventDefault();
   movingRight = true;
-  movingLeft = false;
 });
 rightBtn.addEventListener("mouseup", () => movingRight = false);
 
