@@ -60,13 +60,14 @@ document.addEventListener("keyup", (e) => {
 function gameLoop() {
   if (!isPaused) {
     if (movingLeft && !movingRight) {
-      basketVelocity = Math.max(basketVelocity - acceleration, -maxSpeed);
+      basketVelocity -= acceleration;
     } else if (movingRight && !movingLeft) {
-      basketVelocity = Math.min(basketVelocity + acceleration, maxSpeed);
+      basketVelocity += acceleration;
     } else {
       basketVelocity = 0;
     }
 
+    basketVelocity = Math.max(-maxSpeed, Math.min(maxSpeed, basketVelocity));
     basketX += basketVelocity;
     basketX = Math.max(0, Math.min(window.innerWidth - basket.offsetWidth, basketX));
     updateBasketPosition();
@@ -412,32 +413,17 @@ document.querySelectorAll("#unmute-btn-start, #unmute-btn-over").forEach(btn => 
   });
 });
 
-leftBtn.addEventListener("touchstart", (e) => {
-  e.preventDefault();
-  movingLeft = true;
-  movingRight = false;
-});
+leftBtn.addEventListener("touchstart", () => movingLeft = true);
 leftBtn.addEventListener("touchend", () => movingLeft = false);
 
-rightBtn.addEventListener("touchstart", (e) => {
-  e.preventDefault();
-  movingRight = true;
-  movingLeft = false;
-});
+rightBtn.addEventListener("touchstart", () => movingRight = true);
 rightBtn.addEventListener("touchend", () => movingRight = false);
 
-leftBtn.addEventListener("mousedown", (e) => {
-  e.preventDefault();
-  movingLeft = true;
-  movingRight = false;
-});
+// Optional: Mouse support (for testing on desktop)
+leftBtn.addEventListener("mousedown", () => movingLeft = true);
 leftBtn.addEventListener("mouseup", () => movingLeft = false);
 
-rightBtn.addEventListener("mousedown", (e) => {
-  e.preventDefault();
-  movingRight = true;
-  movingLeft = false;
-});
+rightBtn.addEventListener("mousedown", () => movingRight = true);
 rightBtn.addEventListener("mouseup", () => movingRight = false);
 
 window.onload = () => {
