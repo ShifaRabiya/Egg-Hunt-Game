@@ -61,15 +61,13 @@ document.addEventListener("keyup", (e) => {
 
 function gameLoop() {
   if (!isPaused) {
-      if (movingLeft && !movingRight) {
-    if (basketVelocity > 0) basketVelocity = 0;
-    basketVelocity = Math.max(basketVelocity - acceleration, -maxSpeed);
-  } else if (movingRight && !movingLeft) {
-    if (basketVelocity < 0) basketVelocity = 0;
-    basketVelocity = Math.min(basketVelocity + acceleration, maxSpeed);
-  } else {
-    basketVelocity = 0;
-  }
+    if (movingLeft && !movingRight) {
+      basketVelocity -= acceleration;
+    } else if (movingRight && !movingLeft) {
+      basketVelocity += acceleration;
+    } else {
+      basketVelocity = 0;
+    }
 
     basketVelocity = Math.max(-maxSpeed, Math.min(maxSpeed, basketVelocity));
     basketX += basketVelocity;
@@ -418,33 +416,26 @@ document.querySelectorAll("#unmute-btn-start, #unmute-btn-over").forEach(btn => 
   });
 });
 
-leftBtn.addEventListener("mousedown", (e) => {
-  e.preventDefault();
-  movingLeft = true;
-  movingRight = false;
-});
-leftBtn.addEventListener("mouseup", () => movingLeft = false);
-
-rightBtn.addEventListener("mousedown", (e) => {
-  e.preventDefault();
-  movingRight = true;
-  movingLeft = false;
-});
-rightBtn.addEventListener("mouseup", () => movingRight = false);
-
 leftBtn.addEventListener("touchstart", (e) => {
   e.preventDefault();
-  movingLeft = true;
-  movingRight = false;
+  basketX -= 5;
+  basketX = Math.max(0, basketX);
+  updateBasketPosition();
 });
-leftBtn.addEventListener("touchend", () => movingLeft = false);
 
 rightBtn.addEventListener("touchstart", (e) => {
   e.preventDefault();
-  movingRight = true;
-  movingLeft = false;
+  basketX += 5;
+  basketX = Math.min(window.innerWidth - basket.offsetWidth, basketX);
+  updateBasketPosition();
 });
-rightBtn.addEventListener("touchend", () => movingRight = false);
+
+// Optional: Mouse support (for testing on desktop)
+leftBtn.addEventListener("mousedown", () => movingLeft = true);
+leftBtn.addEventListener("mouseup", () => movingLeft = false);
+
+rightBtn.addEventListener("mousedown", () => movingRight = true);
+rightBtn.addEventListener("mouseup", () => movingRight = false);
 
 window.onload = () => {
   updateVH();
