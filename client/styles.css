@@ -330,7 +330,7 @@ body {
 }
 
 /* MOBILE FIXES */
-@media screen and (max-width: 950px), screen and (max-device-width: 950px) {
+@media screen and (max-width: 850px), screen and (max-device-width: 850px) {
   html {
     font-size: 14px;
   }
@@ -370,7 +370,7 @@ body {
     cursor: pointer;
     pointer-events: auto;
     user-select: none;
-    -webkit-user-select: none; /* For Safari */
+    -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
   }

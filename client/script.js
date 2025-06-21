@@ -10,6 +10,7 @@ const rightBtn = document.getElementById("right-btn");
 const mobileControls = document.querySelector('.mobile-controls');
 const startScreen = document.getElementById('start-screen');
 const gameOverScreen = document.getElementById('game-over-screen');
+const gameOverSound = document.getElementById("game-over-sound");
 const moveSpeed = 10;
 const acceleration = 1;
 const maxSpeed = 15;
@@ -341,7 +342,6 @@ function updateHighScoreIfNeeded() {
 document.getElementById("retry-btn").addEventListener("click", () => {
   document.getElementById("button-sound").play();
 
-  // Stop game-over sound if it's still playing
   gameOverSound.pause();
   gameOverSound.currentTime = 0;
 
@@ -484,4 +484,3 @@ gameContainer.addEventListener("touchmove", function (e) {
   }
 }, { passive: false }); // 👈 important!
 };
-
