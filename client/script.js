@@ -414,16 +414,53 @@ document.querySelectorAll("#unmute-btn-start, #unmute-btn-over").forEach(btn => 
   });
 });
 
+let touchLeftInterval = null;
+let touchRightInterval = null;
+
 leftBtn.addEventListener("touchstart", () => {
+  movingLeft = true;
+
+  // Immediate tap movement
   basketX -= 5;
   basketX = Math.max(0, basketX);
   updateBasketPosition();
+
+  // Start continuous movement
+  touchLeftInterval = setInterval(() => {
+    if (!isPaused && !gameOver) {
+      basketVelocity -= acceleration;
+      basketVelocity = Math.max(-maxSpeed, basketVelocity);
+    }
+  }, 20);
+});
+
+leftBtn.addEventListener("touchend", () => {
+  movingLeft = false;
+  clearInterval(touchLeftInterval);
+  basketVelocity = 0;
 });
 
 rightBtn.addEventListener("touchstart", () => {
+  movingRight = true;
+
+  // Immediate tap movement
   basketX += 5;
   basketX = Math.min(window.innerWidth - basket.offsetWidth, basketX);
   updateBasketPosition();
+
+  // Start continuous movement
+  touchRightInterval = setInterval(() => {
+    if (!isPaused && !gameOver) {
+      basketVelocity += acceleration;
+      basketVelocity = Math.min(maxSpeed, basketVelocity);
+    }
+  }, 20);
+});
+
+rightBtn.addEventListener("touchend", () => {
+  movingRight = false;
+  clearInterval(touchRightInterval);
+  basketVelocity = 0;
 });
 
 window.onload = () => {
@@ -431,7 +468,7 @@ window.onload = () => {
   updateBasketPosition();
   gameLoop();
   fetchHighScore();
-
+  
 gameContainer.addEventListener("touchmove", function (e) {
   if (e.touches.length > 0) {
     e.preventDefault(); // Required to stop scrolling
