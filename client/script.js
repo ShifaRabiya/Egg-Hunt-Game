@@ -60,9 +60,9 @@ document.addEventListener("keyup", (e) => {
 function gameLoop() {
   if (!isPaused) {
     if (movingLeft && !movingRight) {
-      basketVelocity -= acceleration;
+      basketVelocity = Math.max(basketVelocity - acceleration, -maxSpeed);
     } else if (movingRight && !movingLeft) {
-      basketVelocity += acceleration;
+      basketVelocity = Math.min(basketVelocity + acceleration, maxSpeed);
     } else {
       basketVelocity = 0;
     }
