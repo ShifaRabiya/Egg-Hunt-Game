@@ -35,14 +35,11 @@ function updateVH() {
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
 
-// Run at load
 updateVH();
 
-// Update on resize, orientation change, AND visual viewport changes
 window.addEventListener('resize', updateVH);
 window.addEventListener('orientationchange', updateVH);
 
-// For iOS and Android browsers when soft UI appears/disappears
 if (window.visualViewport) {
   window.visualViewport.addEventListener('resize', updateVH);
   window.visualViewport.addEventListener('scroll', updateVH);
@@ -127,7 +124,7 @@ function dropEgg() {
     const leftBound = basketRect.left + basketWidth * 0.01;
     const rightBound = basketRect.right - basketWidth * 0.01;
 
-    // 🥚 Egg caught
+    //Egg caught
     if (
       eggRect.bottom >= basketRect.top &&
       eggRect.left >= leftBound &&
@@ -350,7 +347,9 @@ document.getElementById("retry-btn").addEventListener("click", () => {
   gameOver = false;
 
   startCountdown(() => {
-    mobileControls.classList.remove('hidden'); 
+    if (window.innerWidth <= 850) {
+      mobileControls.classList.remove('hidden');
+    }
     resetGame();
     fetchHighScore();
     dropEgg(); 
@@ -362,7 +361,9 @@ document.getElementById("start-btn").addEventListener("click", () => {
   const startScreen = document.getElementById("start-screen");
   startScreen.style.display = "none";
   startScreen.classList.add('hidden');
-  mobileControls.classList.remove('hidden');
+  if (window.innerWidth <= 850) {
+    mobileControls.classList.remove('hidden');
+  }
 
   startCountdown(() => {
     resetGame();
